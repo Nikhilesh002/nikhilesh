@@ -22,7 +22,7 @@ function Hero() {
                 preRenderFirstString={false}
                 sequence={[
                   500,
-                  "I'm G Sai Nikhilesh", // initially rendered starting point
+                  "I'm Sai Nikhilesh", // initially rendered starting point
                   1500,
                   "I'm a Full Stack Developer",
                   800,
