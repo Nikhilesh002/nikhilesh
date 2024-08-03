@@ -1,3 +1,4 @@
+"use client";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
@@ -6,10 +7,10 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function ContactMe() {
   const form = useRef();
-  const [isVerified,setisVerified]=useState(false);
-  const [isLoading,setisLoading]=useState(false);
+  const [isVerified, setisVerified] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
-  async function verify(value){
+  async function verify(value) {
     console.log(value);
     setisVerified(true);
     // Make an API call to verify reCAPTCHA response
@@ -20,7 +21,7 @@ export default function ContactMe() {
     e.preventDefault();
     const data = e.target;
 
-    if(!isVerified){
+    if (!isVerified) {
       toast.error("Captcha not verified");
       return;
     }
@@ -34,29 +35,28 @@ export default function ContactMe() {
     } else {
       setisLoading(true);
       console.log(data.name.value);
-      
-      // emailjs
-      //   .sendForm(
-      //     import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      //     import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      //     form.current,
-      //     {
-      //       publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      //     }
-      //   )
-      //   .then(
-      //     () => {
-      //       setisLoading(false);
-      //       toast.success("Message sent!!");
-      //       data.email.value = "";
-      //       data.name.value = "";
-      //       data.message.value = "";
-      //     },
-      //     (error) => {
-      //       toast.error("FAILED TO SEND EMAIL", error.text);
-      //     }
-      //   );
-      setisLoading(false);
+
+      emailjs
+        .sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+          form.current,
+          {
+            publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          }
+        )
+        .then(
+          () => {
+            setisLoading(false);
+            toast.success("Message sent!!");
+            data.email.value = "";
+            data.name.value = "";
+            data.message.value = "";
+          },
+          (error) => {
+            toast.error("FAILED TO SEND EMAIL", error.text);
+          }
+        );
     }
   };
 
@@ -116,20 +116,33 @@ export default function ContactMe() {
                 ></textarea>
               </div>
               <div className="flex justify-center ">
-                <ReCAPTCHA sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} theme={"dark"} onChange={verify} />
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                  theme={"dark"}
+                  onChange={verify}
+                />
               </div>
               <button
                 type="submit"
                 className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none font-semibold hover:text-gray-200 focus:ring-purple-200 dark:focus:ring-purple-800  rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2 mt-4"
               >
-                  {isLoading?
+                {isLoading ? (
                   <p className="flex justify-center items-center gap-2">
-                    <svg width="20" height="20" fill="currentColor" className="animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
-                      </path>
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      className="animate-spin"
+                      viewBox="0 0 1792 1792"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                     </svg>
                     <p>Sending</p>
-                  </p> : <p>Send</p>}
+                  </p>
+                ) : (
+                  <p>Send</p>
+                )}
               </button>
             </form>
             <p className="text-sm text-slate-400">

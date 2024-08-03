@@ -1,8 +1,10 @@
+"use client";
+import profilePic from "@/assets/heroImg.png";
+import { HERO_CONTENT } from "@/constants/static_data.js";
 import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { HERO_CONTENT } from "../constants/static_data.js";
+import Image from "next/image.js";
 import { LuDownload } from "react-icons/lu";
-import profilePic from "../assets/heroImg.png";
+import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
   return (
@@ -32,8 +34,13 @@ function Hero() {
             </motion.p>
 
             <div className="mt-16">
-              <a href={import.meta.env.VITE_RESUME_LINK} target="__blank" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2">
-                <LuDownload className="inline-block text-center text-2xl pb-1 me-1 "/>Resume
+              <a
+                href={process.env.NEXT_PUBLIC_RESUME_LINK}
+                target="__blank"
+                className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2"
+              >
+                <LuDownload className="inline-block text-center text-2xl pb-1 me-1 " />
+                Resume
               </a>
             </div>
 
@@ -47,7 +54,7 @@ function Hero() {
             </motion.p>
           </div>
         </div>
-        
+
         <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -55,7 +62,12 @@ function Hero() {
           className="w-full lg:w-1/2 lg:p-8 "
         >
           <div className="flex justify-center">
-            <img className="rounded-3xl" width={600} src={profilePic} alt="profile picture" />
+            <Image
+              className="rounded-3xl"
+              width={600}
+              src={profilePic}
+              alt="profile picture"
+            />
           </div>
         </motion.div>
       </div>

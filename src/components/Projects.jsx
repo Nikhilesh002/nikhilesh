@@ -1,7 +1,9 @@
-import { PROJECTS } from "../constants/static_data";
+"use client"
+import { PROJECTS } from "@/constants/static_data";
 import { motion } from "framer-motion"
 import { GrDeploy } from "react-icons/gr";
 import { FaGithub } from "react-icons/fa";
+import Image from "next/image";
 
 function Projects() {
   return (
@@ -13,7 +15,7 @@ function Projects() {
         className="my-20 text-center text-4xl">Projects</motion.h2>
       <div className="">
         {PROJECTS.map((project, index) => (
-          <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
+          <div key={index} className="mb-8 flex flex-wrap  lg:justify-center">
             <motion.a
               target="__blank"
               href={project.deployment}
@@ -21,7 +23,7 @@ function Projects() {
               initial={{ x: -100, opacity: 0 }}
               transition={{ duration: 0.5,delay:0.15}}
               className="w-full lg:w-1/4">
-              <img
+              <Image
                 src={project.image}
                 width={230}
                 height={230}

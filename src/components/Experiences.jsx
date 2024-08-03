@@ -1,4 +1,5 @@
-import { EXPERIENCES } from "../constants/static_data";
+"use client"
+import { EXPERIENCES } from "@/constants/static_data.js";
 
 function Experiences() {
   return (

@@ -1,7 +1,9 @@
+"use client"
 import { motion } from "framer-motion";
-import aboutImg from "../assets/about.jpg";
-import { ABOUT_TEXT } from "../constants/static_data";
-import {SOCIAL} from "../constants/static_data";
+import aboutImg from "@/assets/about.jpg";
+import { ABOUT_TEXT } from "@/constants/static_data.js";
+import {SOCIAL} from "@/constants/static_data.js";
+import Image from "next/image";
 
 function About() {
   return (
@@ -16,7 +18,7 @@ function About() {
           transition={{ duration: 0.5, delay:0.15}}
           className="w-full lg:w-1/2 lg:p-8 ">
           <div className="flex items-center justify-center">
-            <img className="rounded-3xl" src={aboutImg} alt="about img" />
+            <Image className="rounded-3xl" src={aboutImg} alt="about img" />
           </div>
         </motion.div>
         <motion.div
@@ -29,7 +31,7 @@ function About() {
               {
                 SOCIAL.map((website,index)=>(
                   <a className="inline" target="__blank" key={index} href={website.link}>
-                    <img className={`${website.styles} w-10 `} src={website.img} alt="logo" />
+                    <Image className={`${website.styles} w-10 `} src={website.img} alt="logo" />
                   </a>
                 ))
               }

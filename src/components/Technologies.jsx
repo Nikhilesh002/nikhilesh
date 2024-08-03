@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { DiJavascript } from "react-icons/di";
 import { FaNodeJs } from "react-icons/fa";
