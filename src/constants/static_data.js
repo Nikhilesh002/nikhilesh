@@ -38,15 +38,6 @@ export const SOCIAL=[
 
 export const PROJECTS = [
   {
-    title: "Invigilator",
-    image: project1,
-    deployment:"https://github.com/Nikhilesh002/invigilator",
-    github:"https://github.com/Nikhilesh002/invigilator",
-    description:
-      "A Chrome extension for monitoring student activity and preventing malpractices, integrated with a teacher dashboard. Teacher can track every activity of students like switching tabs, browsing unauthorised websites etc.",
-    technologies: ["JavaScript", "Tailwind CSS", "ReactJS", "NodeJS", "MongoDB"],
-  },
-  {
     title: "Get Me A Chai",
     image: project5,
     deployment:"https://get-me-a-chai-nik.vercel.app/",
@@ -54,6 +45,15 @@ export const PROJECTS = [
     description:
       "Discover and support your favorite creators on our platform, similar to Patreon. Donate directly to creators and help them thrive. Creators can easily view and receive donations.",
     technologies: ["NextJS","JavaScript", "Tailwind CSS", "MongoDB","NextAuth","Razorpay"],
+  },
+  {
+    title: "Invigilator",
+    image: project1,
+    deployment:"https://github.com/Nikhilesh002/invigilator",
+    github:"https://github.com/Nikhilesh002/invigilator",
+    description:
+      "A Chrome extension for monitoring student activity and preventing malpractices, integrated with a teacher dashboard. Teacher can track every activity of students like switching tabs, browsing unauthorised websites etc.",
+    technologies: ["JavaScript", "Tailwind CSS", "ReactJS", "NodeJS", "MongoDB"],
   },
   {
     title: "BlogWiz",

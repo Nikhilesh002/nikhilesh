@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
+import { SOCIAL } from "@/constants/static_data";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,8 @@ export const metadata = {
   url: "https://nikhilesh.vercel.app/",
   image: "https://drive.google.com/file/d/17HI5ukcbUwDivVeXmO5UNmozjmfCAe9R/view?usp=drive_link"
 };
+
+const sameAsLinks = SOCIAL.map(({ link }) => link);
 
 export default function RootLayout({ children }) {
   return (
@@ -49,10 +52,7 @@ export default function RootLayout({ children }) {
             "name": "Nikhilesh",
             "url": metadata.url,
             "image": metadata.image,
-            "sameAs": [
-              "https://github.com/Nikhilesh002",
-              "https://www.linkedin.com/in/nikhilesh002/"
-            ],
+            "sameAs": sameAsLinks,
             "jobTitle": "Full Stack Developer",
             "description": "Looking for internships, remote work, freelance work, and collaboration opportunities.",
             "alumniOf": {
